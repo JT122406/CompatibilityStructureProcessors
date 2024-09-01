@@ -4,22 +4,22 @@ issueTrackerURL = ""
 license = "Insert License Here"
 
 [[mods]]
-modId = "examplemod"
+modId = "compatprocessors"
 version = "${version}"
-displayName = "ExampleMod"
-authors = "Example Author"
+displayName = "Compatibility Structure Processors"
+authors = "Joseph T. McQuigg"
 description = '''
 '''
 #logoFile = ""
 
-[[dependencies.examplemod]]
+[[dependencies.compatprocessors]]
 modId = "forge"
 mandatory = true
 versionRange = "[47.1,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.compatprocessors]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.20.1]"

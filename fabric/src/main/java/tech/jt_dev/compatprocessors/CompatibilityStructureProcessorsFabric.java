@@ -1,15 +1,14 @@
-package com.example.examplemod.fabric;
+package tech.jt_dev.compatprocessors;
 
-import com.example.examplemod.ExampleMod;
 import net.fabricmc.api.ModInitializer;
 
 /**
  * This class is the entrypoint for the mod on the Fabric platform.
  */
-public class ExampleModFabric implements ModInitializer {
+public class CompatibilityStructureProcessorsFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        ExampleMod.init();
+        CompatibilityStructureProcessors.init();
     }
 }
