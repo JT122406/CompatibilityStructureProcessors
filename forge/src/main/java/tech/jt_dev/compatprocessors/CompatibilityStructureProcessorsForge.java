@@ -1,6 +1,7 @@
 package tech.jt_dev.compatprocessors;
 
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 /**
  * Main class for the mod on the Forge platform.
@@ -9,5 +10,6 @@ import net.minecraftforge.fml.common.Mod;
 public class CompatibilityStructureProcessorsForge {
     public CompatibilityStructureProcessorsForge() {
         CompatibilityStructureProcessors.init();
+        ForgePlatformHandler.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 }

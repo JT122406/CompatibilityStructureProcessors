@@ -1,7 +1,9 @@
 package tech.jt_dev.compatprocessors;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
+import tech.jt_dev.compatprocessors.processor.processors.ProcessorRegister;
 
 public class CompatibilityStructureProcessors {
 
@@ -15,6 +17,10 @@ public class CompatibilityStructureProcessors {
      * Initializes the mod.
      */
     public static void init() {
+        ProcessorRegister.registerProcessors();
+    }
 
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 }
