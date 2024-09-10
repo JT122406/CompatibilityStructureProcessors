@@ -1,4 +1,4 @@
-package tech.jt_dev.compatprocessors.processor.processors;
+package tech.jt_dev.compatprocessors.processor;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -7,6 +7,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import org.jetbrains.annotations.NotNull;
 import tech.jt_dev.compatprocessors.CompatibilityStructureProcessors;
 import tech.jt_dev.compatprocessors.PlatformHandler;
+import tech.jt_dev.compatprocessors.processor.processors.DirectionalBlockProcessor;
 
 import java.util.function.Supplier;
 

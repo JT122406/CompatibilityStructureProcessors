@@ -3,7 +3,7 @@ package tech.jt_dev.compatprocessors;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
-import tech.jt_dev.compatprocessors.processor.processors.ProcessorRegister;
+import tech.jt_dev.compatprocessors.processor.ProcessorRegister;
 
 public class CompatibilityStructureProcessors {
 

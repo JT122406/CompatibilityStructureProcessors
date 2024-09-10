@@ -13,6 +13,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import tech.jt_dev.compatprocessors.processor.ProcessorRegister;
 
 /**
  * Replaces a block with another block based on chance
@@ -31,7 +32,7 @@ public class DirectionalBlockProcessor extends StructureProcessor {
     private final Block block;
     private final float chance;
 
-    public DirectionalBlockProcessor(Block old, Block block, float chance) {
+    public DirectionalBlockProcessor(@NotNull Block old, @NotNull Block block, float chance) {
         this.old = old;
         this.block = block;
         this.chance = chance;
