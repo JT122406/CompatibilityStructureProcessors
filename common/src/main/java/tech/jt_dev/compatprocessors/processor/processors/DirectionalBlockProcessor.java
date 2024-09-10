@@ -49,6 +49,6 @@ public class DirectionalBlockProcessor extends StructureProcessor {
 
     @Override
     protected @NotNull StructureProcessorType<?> getType() {
-        return ProcessorRegister.DIRECTIONAL_BLOCK_PROCESSOR;
+        return ProcessorRegister.DIRECTIONAL_BLOCK_PROCESSOR.get();
     }
 }
