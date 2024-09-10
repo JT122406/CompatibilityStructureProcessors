@@ -10,7 +10,7 @@ import tech.jt_dev.compatprocessors.PlatformHandler;
 
 import java.util.function.Supplier;
 
-public class ProcessorRegister<P extends StructureProcessor> {
+public class ProcessorRegister {
 
     public static final Supplier<StructureProcessorType<DirectionalBlockProcessor>> DIRECTIONAL_BLOCK_PROCESSOR = register("directional_block", () -> DirectionalBlockProcessor.CODEC);
 

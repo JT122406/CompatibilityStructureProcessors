@@ -37,14 +37,13 @@ public class DirectionalBlockProcessor extends StructureProcessor {
         this.chance = chance;
     }
 
-
     @Override
     public @Nullable StructureTemplate.StructureBlockInfo processBlock(@NotNull LevelReader level, @NotNull BlockPos offset, @NotNull BlockPos pos, StructureTemplate.@NotNull StructureBlockInfo blockInfo, StructureTemplate.StructureBlockInfo relativeBlockInfo, @NotNull StructurePlaceSettings settings) {
         if (relativeBlockInfo.state().is(old)) {
             if (block.defaultBlockState().hasProperty(BlockStateProperties.FACING) && old.defaultBlockState().hasProperty(BlockStateProperties.FACING) &&
                     settings.getRandom(relativeBlockInfo.pos()).nextFloat() < chance)
                 return new StructureTemplate.StructureBlockInfo(relativeBlockInfo.pos(), block.defaultBlockState().setValue(BlockStateProperties.FACING, relativeBlockInfo.state().getValue(BlockStateProperties.FACING)), relativeBlockInfo.nbt());
-        }return super.processBlock(level, offset, pos, blockInfo, relativeBlockInfo, settings);
+        } return super.processBlock(level, offset, pos, blockInfo, relativeBlockInfo, settings);
     }
 
     @Override
