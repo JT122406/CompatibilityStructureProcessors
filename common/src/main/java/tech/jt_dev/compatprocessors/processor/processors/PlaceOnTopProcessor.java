@@ -13,6 +13,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import tech.jt_dev.compatprocessors.CompatibilityStructureProcessors;
 import tech.jt_dev.compatprocessors.processor.ProcessorRegister;
 
 public class PlaceOnTopProcessor extends StructureProcessor {
@@ -44,9 +45,13 @@ public class PlaceOnTopProcessor extends StructureProcessor {
 
 	@Override
 	public @Nullable StructureTemplate.StructureBlockInfo processBlock(@NotNull LevelReader level, @NotNull BlockPos offset, @NotNull BlockPos pos, StructureTemplate.@NotNull StructureBlockInfo blockInfo, StructureTemplate.@NotNull StructureBlockInfo relativeBlockInfo, @NotNull StructurePlaceSettings settings) {
-		if (relativeBlockInfo.state().is(below) && settings.getRandom(relativeBlockInfo.pos().above()).nextFloat() < chance)
-			return new StructureTemplate.StructureBlockInfo(relativeBlockInfo.pos().above(), above, relativeBlockInfo.nbt());
-		return super.processBlock(level, offset, pos, blockInfo, relativeBlockInfo, settings);
+		BlockPos relPos = relativeBlockInfo.pos();
+        CompatibilityStructureProcessors.LOGGER.info("PlaceOnTopProcessor: Processing block at {}", relPos);
+		if (level.getBlockState(relPos.below()).is(below) && settings.getRandom(relPos).nextFloat() < chance) {
+            CompatibilityStructureProcessors.LOGGER.info("PlaceOnTopProcessor: Placing block at {}", relPos);
+            CompatibilityStructureProcessors.LOGGER.info("PlaceOnTopProcessor: Block state: {}", above);
+			return new StructureTemplate.StructureBlockInfo(relPos, above, relativeBlockInfo.nbt());
+		}return relativeBlockInfo;
 	}
 
 	@Override

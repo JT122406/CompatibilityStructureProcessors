@@ -44,7 +44,7 @@ public class DirectionalBlockProcessor extends StructureProcessor {
             if (block.defaultBlockState().hasProperty(BlockStateProperties.FACING) && old.defaultBlockState().hasProperty(BlockStateProperties.FACING) &&
                     settings.getRandom(relativeBlockInfo.pos()).nextFloat() < chance)
                 return new StructureTemplate.StructureBlockInfo(relativeBlockInfo.pos(), block.defaultBlockState().setValue(BlockStateProperties.FACING, relativeBlockInfo.state().getValue(BlockStateProperties.FACING)), relativeBlockInfo.nbt());
-        } return super.processBlock(level, offset, pos, blockInfo, relativeBlockInfo, settings);
+        } return relativeBlockInfo;
     }
 
     @Override
