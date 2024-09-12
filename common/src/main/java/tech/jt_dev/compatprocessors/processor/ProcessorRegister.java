@@ -9,6 +9,7 @@ import tech.jt_dev.compatprocessors.CompatibilityStructureProcessors;
 import tech.jt_dev.compatprocessors.PlatformHandler;
 import tech.jt_dev.compatprocessors.processor.processors.DirectionalBlockProcessor;
 import tech.jt_dev.compatprocessors.processor.processors.PlaceOnTopProcessor;
+import tech.jt_dev.compatprocessors.processor.processors.RandomCropAgeProcessor;
 
 import java.util.function.Supplier;
 
@@ -16,6 +17,7 @@ public class ProcessorRegister {
 
     public static final Supplier<StructureProcessorType<DirectionalBlockProcessor>> DIRECTIONAL_BLOCK_PROCESSOR = register("directional_block", () -> DirectionalBlockProcessor.CODEC);
     public static final Supplier<StructureProcessorType<PlaceOnTopProcessor>> PLACE_ON_TOP_PROCESSOR = register("place_on_top", () -> PlaceOnTopProcessor.CODEC);
+    public static final Supplier<StructureProcessorType<RandomCropAgeProcessor>> RANDOM_CROP_AGE_PROCESSOR = register("random_crop_age", () -> RandomCropAgeProcessor.CODEC);
 
     /**
      * Utility method for registering custom structure processor types.
