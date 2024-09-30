@@ -33,20 +33,6 @@ public class PlaceOnTopProcessor extends StructureProcessor {
 	/** If true, the block will only be placed if the block above is air */
 	private final boolean air;
 
-	public PlaceOnTopProcessor(Block below, BlockState above, float chance) {
-		this.below = below;
-		this.above = above;
-		this.chance = chance;
-		this.air = false;
-	}
-
-	public PlaceOnTopProcessor(Block below, Block above, float chance) {
-		this.below = below;
-		this.above = above.defaultBlockState();
-		this.chance = chance;
-		this.air = false;
-	}
-
 	public PlaceOnTopProcessor(Block below, BlockState above, float chance, boolean air) {
 		this.below = below;
 		this.above = above;
@@ -55,13 +41,22 @@ public class PlaceOnTopProcessor extends StructureProcessor {
 	}
 
 	public PlaceOnTopProcessor(Block below, Block above, float chance, boolean air) {
-		this.below = below;
-		this.above = above.defaultBlockState();
-		this.chance = chance;
-		this.air = air;
+		this(below, above.defaultBlockState(), chance, air);
+	}
+
+	public PlaceOnTopProcessor(Block below, Block above, float chance) {
+		this(below, above, chance, false);
+	}
+
+	public PlaceOnTopProcessor(Block below, BlockState above, float chance) {
+		this(below, above, chance, false);
 	}
 
 	public PlaceOnTopProcessor(Block below, Block above) {
+		this(below, above, 1.0F);
+	}
+
+	public PlaceOnTopProcessor(Block below, BlockState above) {
 		this(below, above, 1.0F);
 	}
 
