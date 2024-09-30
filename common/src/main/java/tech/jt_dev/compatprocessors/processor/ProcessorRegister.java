@@ -7,10 +7,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import org.jetbrains.annotations.NotNull;
 import tech.jt_dev.compatprocessors.CompatibilityStructureProcessors;
 import tech.jt_dev.compatprocessors.PlatformHandler;
-import tech.jt_dev.compatprocessors.processor.processors.DirectionalBlockProcessor;
-import tech.jt_dev.compatprocessors.processor.processors.PlaceBelowProcessor;
-import tech.jt_dev.compatprocessors.processor.processors.PlaceOnTopProcessor;
-import tech.jt_dev.compatprocessors.processor.processors.RandomCropAgeProcessor;
+import tech.jt_dev.compatprocessors.processor.processors.*;
 
 import java.util.function.Supplier;
 
@@ -20,6 +17,7 @@ public class ProcessorRegister {
     public static final Supplier<StructureProcessorType<PlaceOnTopProcessor>> PLACE_ON_TOP_PROCESSOR = register("place_on_top", () -> PlaceOnTopProcessor.CODEC);
     public static final Supplier<StructureProcessorType<PlaceBelowProcessor>> PLACE_BELOW_PROCESSOR = register("place_below", () -> PlaceBelowProcessor.CODEC);
     public static final Supplier<StructureProcessorType<RandomCropAgeProcessor>> RANDOM_CROP_AGE_PROCESSOR = register("random_crop_age", () -> RandomCropAgeProcessor.CODEC);
+    public static final Supplier<StructureProcessorType<RandomCompatProcessor>> RANDOM_COMPAT_PROCESSOR = register("random_compat", () -> RandomCompatProcessor.CODEC);
 
     /**
      * Utility method for registering custom structure processor types.
