@@ -25,15 +25,6 @@ configurations {
     }
 }
 
-loom {
-    accessWidenerPath.set(project(":common").loom.accessWidenerPath)
-
-    forge {
-        convertAccessWideners.set(true)
-        extraAccessWideners.add(loom.accessWidenerPath.get().asFile.name)
-    }
-}
-
 dependencies {
     if ((project.properties["use_neoforge"] as String).toBoolean())
         forge("net.neoforged:forge:$minecraftVersion-${project.properties["neoforge_version"]}")

@@ -25,12 +25,6 @@ configurations {
     }
 }
 
-loom.accessWidenerPath.set(project(":common").loom.accessWidenerPath)
-
-
-// Fabric Datagen Gradle config.  Remove if not using Fabric datagen
-fabricApi.configureDataGeneration()
-
 dependencies {
     modImplementation("net.fabricmc:fabric-loader:${project.properties["fabric_loader_version"]}")
     modApi("net.fabricmc.fabric-api:fabric-api:${project.properties["fabric_api_version"]}+$minecraftVersion")
@@ -55,7 +49,6 @@ tasks {
     }
 
     remapJar {
-        injectAccessWidener.set(true)
         inputFile.set(shadowJar.get().archiveFile)
         dependsOn(shadowJar)
     }
