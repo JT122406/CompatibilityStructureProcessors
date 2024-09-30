@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
@@ -12,31 +12,53 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import tech.jt_dev.compatprocessors.CompatibilityStructureProcessors;
 import tech.jt_dev.compatprocessors.processor.ProcessorRegister;
+
+import java.util.List;
 
 public class PlaceOnTopProcessor extends StructureProcessor {
 	public static final Codec<PlaceOnTopProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 			BuiltInRegistries.BLOCK.byNameCodec().fieldOf("below").forGetter((below) -> below.below),
 			BlockState.CODEC.fieldOf("above").forGetter((block) -> block.above),
-			Codec.FLOAT.fieldOf("chance").forGetter((chance) -> chance.chance)
+			Codec.FLOAT.optionalFieldOf("chance", 1.0f).forGetter((chance) -> chance.chance),
+			Codec.BOOL.optionalFieldOf("air", false).forGetter((air) -> air.air)
 	).apply(instance, PlaceOnTopProcessor::new));
 
+	/** The block that must be below the block to be placed */
 	private final Block below;
+	/** The block that will be placed above the given below block */
 	private final BlockState above;
+	/** The chance that the block will be placed */
 	private final float chance;
+	/** If true, the block will only be placed if the block above is air */
+	private final boolean air;
 
 	public PlaceOnTopProcessor(Block below, BlockState above, float chance) {
 		this.below = below;
 		this.above = above;
 		this.chance = chance;
+		this.air = false;
 	}
 
 	public PlaceOnTopProcessor(Block below, Block above, float chance) {
 		this.below = below;
 		this.above = above.defaultBlockState();
 		this.chance = chance;
+		this.air = false;
+	}
+
+	public PlaceOnTopProcessor(Block below, BlockState above, float chance, boolean air) {
+		this.below = below;
+		this.above = above;
+		this.chance = chance;
+		this.air = air;
+	}
+
+	public PlaceOnTopProcessor(Block below, Block above, float chance, boolean air) {
+		this.below = below;
+		this.above = above.defaultBlockState();
+		this.chance = chance;
+		this.air = air;
 	}
 
 	public PlaceOnTopProcessor(Block below, Block above) {
@@ -44,14 +66,20 @@ public class PlaceOnTopProcessor extends StructureProcessor {
 	}
 
 	@Override
-	public @Nullable StructureTemplate.StructureBlockInfo processBlock(@NotNull LevelReader level, @NotNull BlockPos offset, @NotNull BlockPos pos, StructureTemplate.@NotNull StructureBlockInfo blockInfo, StructureTemplate.@NotNull StructureBlockInfo relativeBlockInfo, @NotNull StructurePlaceSettings settings) {
-		BlockPos relPos = relativeBlockInfo.pos();
-        CompatibilityStructureProcessors.LOGGER.info("PlaceOnTopProcessor: Processing block at {}", relPos);
-		if (level.getBlockState(relPos.below()).is(below) && settings.getRandom(relPos).nextFloat() < chance) {
-            CompatibilityStructureProcessors.LOGGER.info("PlaceOnTopProcessor: Placing block at {}", relPos);
-            CompatibilityStructureProcessors.LOGGER.info("PlaceOnTopProcessor: Block state: {}", above);
-			return new StructureTemplate.StructureBlockInfo(relPos, above, relativeBlockInfo.nbt());
-		}return relativeBlockInfo;
+	public @NotNull List<StructureTemplate.StructureBlockInfo> finalizeProcessing(@NotNull ServerLevelAccessor serverLevel, @NotNull BlockPos offset, @NotNull BlockPos pos, @NotNull List<StructureTemplate.StructureBlockInfo> originalBlockInfos, @NotNull List<StructureTemplate.StructureBlockInfo> processedBlockInfos, @NotNull StructurePlaceSettings settings) {
+		List<StructureTemplate.StructureBlockInfo> newInfo = new java.util.ArrayList<>(List.copyOf(processedBlockInfos));
+
+		processedBlockInfos.stream().filter(blockInfo -> blockInfo.state().is(this.below)).forEach(below -> {
+			BlockPos belowPos = below.pos();
+				newInfo.stream().filter(blockInfo -> blockInfo.pos().equals(belowPos.above())).findFirst().ifPresent(spot -> {
+					if (!air || spot.state().isAir())
+						if (serverLevel.getRandom().nextFloat() < chance) {
+							newInfo.remove(spot);
+							newInfo.add(new StructureTemplate.StructureBlockInfo(spot.pos(), above, spot.nbt()));
+						}
+				});
+		});
+		return newInfo;
 	}
 
 	@Override
