@@ -1,13 +1,13 @@
-package tech.jt_dev.compatprocessors.processor;
+package tech.jt_dev.moreprocessors.processor;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import org.jetbrains.annotations.NotNull;
-import tech.jt_dev.compatprocessors.CompatibilityStructureProcessors;
-import tech.jt_dev.compatprocessors.PlatformHandler;
-import tech.jt_dev.compatprocessors.processor.processors.*;
+import tech.jt_dev.moreprocessors.MoreStructureProcessors;
+import tech.jt_dev.moreprocessors.PlatformHandler;
+import tech.jt_dev.moreprocessors.processor.processors.*;
 
 import java.util.function.Supplier;
 
@@ -28,6 +28,6 @@ public class ProcessorRegister {
 
 
     public static void registerProcessors() {
-        CompatibilityStructureProcessors.LOGGER.info("Registering Structure Processors");
+        MoreStructureProcessors.LOGGER.info("Registering Structure Processors");
     }
 }

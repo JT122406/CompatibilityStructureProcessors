@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "compatprocessors",
+  "id": "moreprocessors",
   "version": "${version}",
-  "name": "Compatibility Structure Processors",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "More Structure Processors",
+  "description": "Adds more structure processors for Developers to use in Mods or Datapacks",
   "authors": [
     "Joseph T. McQuigg"
   ],
@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "tech.jt_dev.compatprocessors.CompatibilityStructureProcessorsFabric"
+      "tech.jt_dev.compatprocessors.MoreStructureProcessorsFabric"
     ]
   },
   "depends": {

@@ -1,4 +1,4 @@
-package tech.jt_dev.compatprocessors;
+package tech.jt_dev.moreprocessors;
 
 import net.minecraft.core.Registry;
 

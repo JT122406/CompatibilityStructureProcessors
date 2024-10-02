@@ -17,4 +17,4 @@ develocity.buildScan {
 
 include("common", "fabric", "forge")
 
-rootProject.name = "CompatibilityStructureProcessors"
+rootProject.name = "MoreStructureProcessors"

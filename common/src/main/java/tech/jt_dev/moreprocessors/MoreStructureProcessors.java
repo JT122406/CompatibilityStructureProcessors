@@ -1,14 +1,14 @@
-package tech.jt_dev.compatprocessors;
+package tech.jt_dev.moreprocessors;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
-import tech.jt_dev.compatprocessors.processor.ProcessorRegister;
+import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
-public class CompatibilityStructureProcessors {
+public class MoreStructureProcessors {
 
-    /** The mod id for  examplemod. */
-    public static final String MOD_ID = "compatprocessors";
+    /** The mod id for More Structure Processors. */
+    public static final String MOD_ID = "moreprocessors";
 
     /** The logger for examplemod. */
     public static final Logger LOGGER = LogUtils.getLogger();

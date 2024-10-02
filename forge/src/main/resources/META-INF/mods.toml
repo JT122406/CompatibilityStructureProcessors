@@ -4,22 +4,23 @@ issueTrackerURL = ""
 license = "All Rights Reserved"
 
 [[mods]]
-modId = "compatprocessors"
+modId = "moreprocessors"
 version = "${version}"
-displayName = "Compatibility Structure Processors"
+displayName = "More Structure Processors"
 authors = "Joseph T. McQuigg"
 description = '''
+Adds more structure processors for Developers to use in Mods or Datapacks
 '''
 #logoFile = ""
 
-[[dependencies.compatprocessors]]
+[[dependencies.moreprocessors]]
 modId = "forge"
 mandatory = true
 versionRange = "[47.1,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.compatprocessors]]
+[[dependencies.moreprocessors]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.20.1]"

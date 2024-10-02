@@ -1,4 +1,4 @@
-package tech.jt_dev.compatprocessors.processor.processors;
+package tech.jt_dev.moreprocessors.processor.processors;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -13,7 +13,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tech.jt_dev.compatprocessors.processor.ProcessorRegister;
+import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
 /**
  * Replaces a block with another block based on chance

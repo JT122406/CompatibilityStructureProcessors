@@ -1,4 +1,4 @@
-package tech.jt_dev.compatprocessors;
+package tech.jt_dev.moreprocessors;
 
 import com.google.auto.service.AutoService;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
@@ -16,7 +16,7 @@ public class ForgePlatformHandler implements PlatformHandler{
 
     @Override
     public <T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value) {
-        return CACHED.computeIfAbsent(registry.key(), key -> DeferredRegister.create(registry.key().location(), CompatibilityStructureProcessors.MOD_ID)).register(name, value);
+        return CACHED.computeIfAbsent(registry.key(), key -> DeferredRegister.create(registry.key().location(), MoreStructureProcessors.MOD_ID)).register(name, value);
     }
 
     public static void register(IEventBus bus) {
