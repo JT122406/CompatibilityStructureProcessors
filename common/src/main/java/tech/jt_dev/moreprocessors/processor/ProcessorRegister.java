@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import tech.jt_dev.moreprocessors.MoreStructureProcessors;
 import tech.jt_dev.moreprocessors.PlatformHandler;
 import tech.jt_dev.moreprocessors.processor.processors.*;
+import tech.jt_dev.moreprocessors.processor.processors.CompatRuleProcessor;
 
 import java.util.function.Supplier;
 
@@ -20,6 +21,7 @@ public class ProcessorRegister {
     public static final Supplier<StructureProcessorType<CompatReplaceProcessor>> COMPAT_REPLACE_PROCESSOR = register("compat_replace", () -> CompatReplaceProcessor.CODEC);
     public static final Supplier<StructureProcessorType<CompatReplaceSameStateProcessor>> COMPAT_REPLACE_SAME_STATE_PROCESSOR = register("compat_replace_same_state", () -> CompatReplaceSameStateProcessor.CODEC);
     public static final Supplier<StructureProcessorType<RandomCompatProcessor>> RANDOM_COMPAT_PROCESSOR = register("random_compat", () -> RandomCompatProcessor.CODEC);
+    public static final Supplier<StructureProcessorType<CompatRuleProcessor>> COMPAT_RULE = register("compat_rule", () -> CompatRuleProcessor.CODEC);
 
     /**
      * Utility method for registering custom structure processor types.
