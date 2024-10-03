@@ -1,7 +1,8 @@
-package tech.jt_dev.moreprocessors;
+package tech.jt_dev.moreprocessors.forge;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import tech.jt_dev.moreprocessors.MoreStructureProcessors;
 
 /**
  * Main class for the mod on the Forge platform.

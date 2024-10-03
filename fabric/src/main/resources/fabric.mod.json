@@ -12,11 +12,11 @@
     "sources": ""
   },
   "license": "All Rights Reserved",
-  "icon": "assets/examplemod/icon.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "tech.jt_dev.compatprocessors.MoreStructureProcessorsFabric"
+      "tech.jt_dev.moreprocessors.fabric.MoreStructureProcessorsFabric"
     ]
   },
   "depends": {

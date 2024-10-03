@@ -11,7 +11,7 @@ authors = "Joseph T. McQuigg"
 description = '''
 Adds more structure processors for Developers to use in Mods or Datapacks
 '''
-#logoFile = ""
+logoFile = "icon.png"
 
 [[dependencies.moreprocessors]]
 modId = "forge"
