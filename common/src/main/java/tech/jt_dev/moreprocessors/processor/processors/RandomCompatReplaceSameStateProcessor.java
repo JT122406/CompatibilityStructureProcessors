@@ -15,35 +15,39 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
-public class CompatReplaceSameStateProcessor extends StructureProcessor {
+public class RandomCompatReplaceSameStateProcessor extends StructureProcessor {
 
-    public static final Codec<CompatReplaceSameStateProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final Codec<RandomCompatReplaceSameStateProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             BuiltInRegistries.BLOCK.byNameCodec().fieldOf("block").forGetter((block) -> block.block),
-            ResourceLocation.CODEC.fieldOf("replace").forGetter((replace) -> replace.replace)
-    ).apply(instance, CompatReplaceSameStateProcessor::new));
+            ResourceLocation.CODEC.fieldOf("replace").forGetter((replace) -> replace.replace),
+            Codec.FLOAT.optionalFieldOf("chance", 1.0f).forGetter((chance) -> chance.chance)
+    ).apply(instance, RandomCompatReplaceSameStateProcessor::new));
 
     private final Block block;
     private final ResourceLocation replace;
+    private final float chance;
 
-    public CompatReplaceSameStateProcessor(Block block, Block replace) {
+    public RandomCompatReplaceSameStateProcessor(Block block, Block replace, float chance) {
         this.block = block;
         this.replace = BuiltInRegistries.BLOCK.getKey(replace);
+        this.chance = chance;
     }
 
-    public CompatReplaceSameStateProcessor(Block block, ResourceLocation replace) {
+    public RandomCompatReplaceSameStateProcessor(Block block, ResourceLocation replace, float chance) {
         this.block = block;
         this.replace = replace;
+        this.chance = chance;
     }
 
     @Override
     public @Nullable StructureTemplate.StructureBlockInfo processBlock(@NotNull LevelReader level, @NotNull BlockPos offset, @NotNull BlockPos pos, StructureTemplate.@NotNull StructureBlockInfo blockInfo, StructureTemplate.@NotNull StructureBlockInfo relativeBlockInfo, @NotNull StructurePlaceSettings settings) {
-        if (relativeBlockInfo.state().is(block) && BuiltInRegistries.BLOCK.containsKey(replace))
+        if (relativeBlockInfo.state().is(block) && BuiltInRegistries.BLOCK.containsKey(replace) && settings.getRandom(relativeBlockInfo.pos()).nextFloat() < chance)
             return new StructureTemplate.StructureBlockInfo(relativeBlockInfo.pos(), BuiltInRegistries.BLOCK.get(replace).withPropertiesOf(relativeBlockInfo.state()), relativeBlockInfo.nbt());
         return relativeBlockInfo;
     }
 
     @Override
     protected @NotNull StructureProcessorType<?> getType() {
-        return ProcessorRegister.COMPAT_REPLACE_SAME_STATE_PROCESSOR.get();
+        return ProcessorRegister.RANDOM_COMPAT_REPLACE_SAME_STATE_PROCESSOR.get();
     }
 }
