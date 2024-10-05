@@ -24,6 +24,8 @@ public class ProcessorRegister {
     public static final Supplier<StructureProcessorType<RandomReplaceSameStateProcessor>> RANDOM_REPLACE_SAME_STATE_PROCESSOR = register("random_replace_same_state", () -> RandomReplaceSameStateProcessor.CODEC);
     public static final Supplier<StructureProcessorType<RandomCompatProcessor>> RANDOM_COMPAT_PROCESSOR = register("random_compat", () -> RandomCompatProcessor.CODEC);
     public static final Supplier<StructureProcessorType<CompatRuleProcessor>> COMPAT_RULE = register("compat_rule", () -> CompatRuleProcessor.CODEC);
+    public static final Supplier<StructureProcessorType<SameStateCompatRuleProcessor>> SAME_STATE_COMPAT_RULE = register("same_state_compat_rule", () -> SameStateCompatRuleProcessor.CODEC);
+    public static final Supplier<StructureProcessorType<SameStateRuleProcessor>> SAME_STATE_RULE = register("same_state_rule", () -> SameStateRuleProcessor.CODEC);
     public static final Supplier<StructureProcessorType<ReplaceSameStateProcessor>> REPLACE_SAME_STATE_PROCESSOR = register("replace_same_state", () -> ReplaceSameStateProcessor.CODEC);
 
     /**
