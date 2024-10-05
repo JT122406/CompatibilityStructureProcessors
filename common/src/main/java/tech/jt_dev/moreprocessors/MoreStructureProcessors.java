@@ -14,7 +14,7 @@ public class MoreStructureProcessors {
     /** The mod id for More Structure Processors. */
     public static final String MOD_ID = "moreprocessors";
 
-    /** The logger for examplemod. */
+    /** The logger for More Structure Processors. */
     public static final Logger LOGGER = LogUtils.getLogger();
 
     /**

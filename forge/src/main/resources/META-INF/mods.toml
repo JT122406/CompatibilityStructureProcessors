@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[47,)"
-issueTrackerURL = ""
+issueTrackerURL = "https://github.com/JT122406/MoreStructureProcessors/issues"
 license = "All Rights Reserved"
 
 [[mods]]
