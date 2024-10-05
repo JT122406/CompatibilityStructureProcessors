@@ -1,9 +1,12 @@
 import net.fabricmc.loom.api.LoomGradleExtensionAPI
+import com.hypherionmc.modpublisher.properties.CurseEnvironment
+import com.hypherionmc.modpublisher.properties.ReleaseType
 
 plugins {
     id("architectury-plugin") version "3.4-SNAPSHOT"
     id("dev.architectury.loom") version "1.7-SNAPSHOT" apply false
-    id("com.gradleup.shadow") version "8.3.2" apply false
+    id("com.gradleup.shadow") version "8.3.3" apply false
+    id("com.hypherionmc.modutils.modpublisher") version "2.+"
     java
     idea
     `maven-publish`
@@ -21,6 +24,7 @@ subprojects {
     apply(plugin = "dev.architectury.loom")
     apply(plugin = "architectury-plugin")
     apply(plugin = "maven-publish")
+    apply(plugin = "com.hypherionmc.modutils.modpublisher")
 
     base.archivesName.set(project.properties["archives_base_name"] as String + "-${project.name}")
 
@@ -80,4 +84,30 @@ subprojects {
             }
         }
     }
+
+    if (project.name != "common")
+        publisher {
+            apiKeys {
+                curseforge(getPublishingCredentials().first)
+                modrinth(getPublishingCredentials().second)
+                github(project.properties["github_token"].toString())
+            }
+            displayName.set(base.archivesName.get() + "-${project.version}")
+            artifact.set(project.tasks.getByName("remapJar"))
+            projectVersion.set(project.version.toString() + "-${project.name}")
+            changelog.set(projectDir.toPath().parent.resolve("CHANGELOG.md").toFile().readText())
+            curseID.set("1113983")
+            modrinthID.set("tNN2aemW")
+            githubRepo.set("https://github.com/JT122406/MoreStructureProcessors")
+            setReleaseType(ReleaseType.RELEASE)
+            setGameVersions(minecraftVersion)
+            setCurseEnvironment(CurseEnvironment.SERVER)
+            setJavaVersions(JavaVersion.VERSION_17, JavaVersion.VERSION_18, JavaVersion.VERSION_19, JavaVersion.VERSION_20, JavaVersion.VERSION_21, JavaVersion.VERSION_22)
+        }
+}
+
+private fun getPublishingCredentials(): Pair<String?, String?> {
+    val curseForgeToken = (project.findProperty("curseforge_token") ?: System.getenv("CURSEFORGE_TOKEN") ?: "") as String?
+    val modrinthToken = (project.findProperty("modrinth_token") ?: System.getenv("MODRINTH_TOKEN") ?: "") as String?
+    return Pair(curseForgeToken, modrinthToken)
 }

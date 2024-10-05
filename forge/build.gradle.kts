@@ -1,3 +1,5 @@
+import com.hypherionmc.modpublisher.properties.ModLoader
+
 plugins {
     id("com.gradleup.shadow")
 }
@@ -53,3 +55,5 @@ tasks {
         dependsOn(shadowJar)
     }
 }
+
+publisher.setLoaders(ModLoader.FORGE, ModLoader.NEOFORGE)
