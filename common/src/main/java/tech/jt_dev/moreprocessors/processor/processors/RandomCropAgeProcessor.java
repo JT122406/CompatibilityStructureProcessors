@@ -15,6 +15,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
+/**
+ * Processor that sets the age of a crop block to a random value
+ * @see StructureProcessor
+ * @author Joseph T. McQuigg
+ */
 public class RandomCropAgeProcessor extends StructureProcessor {
 
     public static final Codec<RandomCropAgeProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(

@@ -5,6 +5,10 @@ import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
+/**
+ * Main class for the More Structure Processors.
+ * @author Joseph T. McQuigg
+ */
 public class MoreStructureProcessors {
 
     /** The mod id for More Structure Processors. */

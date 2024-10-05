@@ -16,6 +16,11 @@ import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
 import java.util.List;
 
+/**
+ * Processor that places a block below another block.
+ * @see StructureProcessor
+ * @author Joseph T. McQuigg
+ */
 public class PlaceBelowProcessor extends StructureProcessor {
 
     public static final Codec<PlaceBelowProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(

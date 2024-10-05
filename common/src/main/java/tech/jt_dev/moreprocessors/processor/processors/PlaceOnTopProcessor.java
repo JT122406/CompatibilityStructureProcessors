@@ -16,7 +16,13 @@ import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
 import java.util.List;
 
+/**
+ * Processor that places a block above another block.
+ * @see StructureProcessor
+ * @author Joseph T. McQuigg
+ */
 public class PlaceOnTopProcessor extends StructureProcessor {
+
 	public static final Codec<PlaceOnTopProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 			BuiltInRegistries.BLOCK.byNameCodec().fieldOf("below").forGetter((below) -> below.below),
 			BlockState.CODEC.fieldOf("above").forGetter((block) -> block.above),

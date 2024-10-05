@@ -19,7 +19,9 @@ import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
  * Replaces a block with another block based on chance
  * Places the block in the same direction as the original block
  * Useful for replacing blocks like furnaces with blast furnaces
+ * Will be replaced with a rule-based processor in the future
  */
+@Deprecated(forRemoval = true)
 public class DirectionalBlockProcessor extends StructureProcessor {
 
     public static final Codec<DirectionalBlockProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
