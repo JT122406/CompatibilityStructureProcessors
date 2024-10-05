@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
+@Deprecated(forRemoval = true)
 public class ReplaceSameStateProcessor extends StructureProcessor {
 
     public static final Codec<ReplaceSameStateProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(

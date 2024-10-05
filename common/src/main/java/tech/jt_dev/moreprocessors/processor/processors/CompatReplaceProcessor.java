@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
+@Deprecated(forRemoval = true)
 public class CompatReplaceProcessor extends StructureProcessor {
 
 	public static final Codec<CompatReplaceProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
