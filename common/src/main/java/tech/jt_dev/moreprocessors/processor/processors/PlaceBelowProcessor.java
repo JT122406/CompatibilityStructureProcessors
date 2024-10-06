@@ -21,6 +21,7 @@ import java.util.List;
  * @see StructureProcessor
  * @author Joseph T. McQuigg
  */
+@Deprecated(forRemoval = true)
 public class PlaceBelowProcessor extends StructureProcessor {
 
     public static final Codec<PlaceBelowProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
