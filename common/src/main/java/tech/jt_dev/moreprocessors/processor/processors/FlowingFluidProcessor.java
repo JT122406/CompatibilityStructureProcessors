@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
+@Deprecated
 public class FlowingFluidProcessor extends StructureProcessor {
 
     public static final Codec<FlowingFluidProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
