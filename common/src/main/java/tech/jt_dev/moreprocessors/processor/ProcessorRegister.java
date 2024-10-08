@@ -26,6 +26,7 @@ public class ProcessorRegister {
     public static final Supplier<StructureProcessorType<CompatRuleProcessor>> COMPAT_RULE = register("compat_rule", () -> CompatRuleProcessor.CODEC);
     public static final Supplier<StructureProcessorType<SameStateCompatRuleProcessor>> SAME_STATE_COMPAT_RULE = register("same_state_compat_rule", () -> SameStateCompatRuleProcessor.CODEC);
     public static final Supplier<StructureProcessorType<SameStateRuleProcessor>> SAME_STATE_RULE = register("same_state_rule", () -> SameStateRuleProcessor.CODEC);
+    public static final Supplier<StructureProcessorType<FlowingFluidProcessor>> FLOWING_FLUID_PROCESSOR = register("flowing_fluid", () -> FlowingFluidProcessor.CODEC);
 
     /**
      * Utility method for registering custom structure processor types.
