@@ -43,4 +43,4 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Execute Gradle build and Publish to Maven
-        run: ./gradlew publish publishAllPublicationsToGenerations-RepoRepository
+        run: ./gradlew publish publishAllPublicationsToJTDev-Maven-Repository
