@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.templatesystem.AlwaysTrueTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosAlwaysTrueTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -49,8 +50,16 @@ public class SameStateCompatProcessorRule {
         this(inputPredicate, locPredicate, PosAlwaysTrueTest.INSTANCE, outputLocation, DEFAULT_BLOCK_ENTITY_MODIFIER);
     }
 
+    public SameStateCompatProcessorRule(RuleTest inputPredicate, ResourceLocation outputLocation) {
+        this(inputPredicate, AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE, outputLocation, DEFAULT_BLOCK_ENTITY_MODIFIER);
+    }
+
     public SameStateCompatProcessorRule(RuleTest inputPredicate, RuleTest locPredicate, Block outputBlock) {
         this(inputPredicate, locPredicate, BuiltInRegistries.BLOCK.getKey(outputBlock));
+    }
+
+    public SameStateCompatProcessorRule(RuleTest inputPredicate, Block outputBlock) {
+        this(inputPredicate, BuiltInRegistries.BLOCK.getKey(outputBlock));
     }
 
     public boolean test(BlockState inputState, BlockState existingState, BlockPos localPos, BlockPos relativePos, BlockPos structurePos, RandomSource random) {

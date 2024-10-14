@@ -5,8 +5,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.templatesystem.AlwaysTrueTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosAlwaysTrueTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -43,6 +43,10 @@ public class FlowingFluidProcessorRule {
 
     public FlowingFluidProcessorRule(RuleTest inputPredicate, RuleTest locPredicate, Fluid outputFluid) {
         this(inputPredicate, locPredicate, PosAlwaysTrueTest.INSTANCE, outputFluid, DEFAULT_BLOCK_ENTITY_MODIFIER);
+    }
+
+    public FlowingFluidProcessorRule(RuleTest inputPredicate, Fluid outputFluid) {
+        this(inputPredicate, AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE, outputFluid, DEFAULT_BLOCK_ENTITY_MODIFIER);
     }
 
 

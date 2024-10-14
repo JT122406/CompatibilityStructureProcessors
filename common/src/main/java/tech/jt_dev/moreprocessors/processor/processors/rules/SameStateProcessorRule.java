@@ -8,6 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.templatesystem.AlwaysTrueTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosAlwaysTrueTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -46,6 +47,10 @@ public class SameStateProcessorRule {
 
     public SameStateProcessorRule(RuleTest inputPredicate, RuleTest locPredicate, Block outputBlock) {
         this(inputPredicate, locPredicate, PosAlwaysTrueTest.INSTANCE, outputBlock, DEFAULT_BLOCK_ENTITY_MODIFIER);
+    }
+
+    public SameStateProcessorRule(RuleTest inputPredicate, Block outputBlock) {
+        this(inputPredicate, AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE, outputBlock, DEFAULT_BLOCK_ENTITY_MODIFIER);
     }
 
     public boolean test(BlockState inputState, BlockState existingState, BlockPos localPos, BlockPos relativePos, BlockPos structurePos, RandomSource random) {

@@ -6,11 +6,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.templatesystem.AlwaysTrueTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosAlwaysTrueTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -52,6 +53,18 @@ public class BiomeProcessorRule {
 
 	public BiomeProcessorRule(RuleTest inputPredicate, RuleTest locPredicate, BlockState outputState, ResourceKey<Biome> biome) {
 		this(inputPredicate, locPredicate, PosAlwaysTrueTest.INSTANCE, outputState, DEFAULT_BLOCK_ENTITY_MODIFIER, biome);
+	}
+
+	public BiomeProcessorRule(RuleTest inputPredicate, BlockState outputState, ResourceKey<Biome> biome) {
+		this(inputPredicate, AlwaysTrueTest.INSTANCE, outputState, biome);
+	}
+
+	public BiomeProcessorRule(RuleTest inputPredicate, RuleTest locPredicate, Block outputBlock, ResourceKey<Biome> biome) {
+		this(inputPredicate, locPredicate, outputBlock.defaultBlockState(), biome);
+	}
+
+	public BiomeProcessorRule(RuleTest inputPredicate, Block outputBlock, ResourceKey<Biome> biome) {
+		this(inputPredicate, outputBlock.defaultBlockState(), biome);
 	}
 
 	public boolean test(LevelReader level, BlockState inputState, BlockState existingState, BlockPos localPos, BlockPos relativePos, BlockPos structurePos, RandomSource random) {
