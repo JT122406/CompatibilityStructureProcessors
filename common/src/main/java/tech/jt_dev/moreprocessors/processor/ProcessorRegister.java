@@ -28,6 +28,7 @@ public class ProcessorRegister {
     public static final Supplier<StructureProcessorType<SameStateRuleProcessor>> SAME_STATE_RULE = register("same_state_rule", () -> SameStateRuleProcessor.CODEC);
     public static final Supplier<StructureProcessorType<FlowingFluidRuleProcessor>> FLOWING_FLUID_RULE = register("flowing_fluid_rule", () -> FlowingFluidRuleProcessor.CODEC);
     public static final Supplier<StructureProcessorType<BiomeBasedProcessor>> BIOME_BASED_PROCESSOR = register("biome_based", () -> BiomeBasedProcessor.CODEC);
+    public static final Supplier<StructureProcessorType<BiomeTagBasedProcessor>> BIOME_TAG_BASED_PROCESSOR = register("biome_tag_based", () -> BiomeTagBasedProcessor.CODEC);
 
     /**
      * Utility method for registering custom structure processor types.
