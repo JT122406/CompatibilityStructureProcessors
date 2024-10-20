@@ -19,7 +19,6 @@ import java.util.function.Supplier;
  */
 public class ProcessorRegister {
 
-    public static final Supplier<StructureProcessorType<DirectionalBlockProcessor>> DIRECTIONAL_BLOCK_PROCESSOR = register("directional_block", () -> DirectionalBlockProcessor.CODEC);
     public static final Supplier<StructureProcessorType<PlaceOnTopProcessor>> PLACE_ON_TOP_PROCESSOR = register("place_on_top", () -> PlaceOnTopProcessor.CODEC);
     public static final Supplier<StructureProcessorType<PlaceBelowProcessor>> PLACE_BELOW_PROCESSOR = register("place_below", () -> PlaceBelowProcessor.CODEC);
     public static final Supplier<StructureProcessorType<RandomCropAgeProcessor>> RANDOM_CROP_AGE_PROCESSOR = register("random_crop_age", () -> RandomCropAgeProcessor.CODEC);
@@ -29,6 +28,7 @@ public class ProcessorRegister {
     public static final Supplier<StructureProcessorType<FlowingFluidRuleProcessor>> FLOWING_FLUID_RULE = register("flowing_fluid_rule", () -> FlowingFluidRuleProcessor.CODEC);
     public static final Supplier<StructureProcessorType<BiomeRuleProcessor>> BIOME_RULE = register("biome_rule", () -> BiomeRuleProcessor.CODEC);
     public static final Supplier<StructureProcessorType<BiomeTagBasedProcessor>> BIOME_TAG_BASED_PROCESSOR = register("biome_tag_based", () -> BiomeTagBasedProcessor.CODEC);
+    public static final Supplier<StructureProcessorType<DirectionalRuleProcessor>> DIRECTIONAL_RULE_PROCESSOR = register("directional_rule", () -> DirectionalRuleProcessor.CODEC);
 
     /**
      * Utility method for registering custom structure processor types.
