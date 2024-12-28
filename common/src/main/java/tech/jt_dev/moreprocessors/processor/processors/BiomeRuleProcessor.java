@@ -1,7 +1,7 @@
 package tech.jt_dev.moreprocessors.processor.processors;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -19,11 +19,10 @@ import tech.jt_dev.moreprocessors.processor.processors.rules.BiomeProcessorRule;
 import java.util.List;
 
 public class BiomeRuleProcessor extends StructureProcessor {
-	public static final Codec<BiomeRuleProcessor> CODEC = BiomeProcessorRule.CODEC
+	public static final MapCodec<BiomeRuleProcessor> CODEC = BiomeProcessorRule.CODEC
 			.listOf()
 			.fieldOf("rules")
-			.xmap(BiomeRuleProcessor::new, arg -> arg.rules)
-			.codec();
+			.xmap(BiomeRuleProcessor::new, arg -> arg.rules);
 
 	private final ImmutableList<BiomeProcessorRule> rules;
 

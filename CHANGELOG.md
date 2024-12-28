@@ -1,3 +1,6 @@
+# 2.0.0
+- Update to 1.21.1, Add NeoForge Support
+
 # 1.2.1
 - Remove Deprecation on PlaceBelow and OnTop Processors
 - Add RandomCropRandomAgeProcessor

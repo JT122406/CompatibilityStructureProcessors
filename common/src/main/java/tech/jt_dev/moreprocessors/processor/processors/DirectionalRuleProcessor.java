@@ -1,7 +1,7 @@
 package tech.jt_dev.moreprocessors.processor.processors;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -21,11 +21,10 @@ import java.util.List;
 
 public class DirectionalRuleProcessor extends StructureProcessor {
 
-    public static final Codec<DirectionalRuleProcessor> CODEC = DirectionalProcessorRule.CODEC
+    public static final MapCodec<DirectionalRuleProcessor> CODEC = DirectionalProcessorRule.CODEC
             .listOf()
             .fieldOf("rules")
-            .xmap(DirectionalRuleProcessor::new, arg -> arg.rules)
-            .codec();
+            .xmap(DirectionalRuleProcessor::new, arg -> arg.rules);
 
     private final ImmutableList<DirectionalProcessorRule> rules;
 

@@ -1,6 +1,7 @@
 package tech.jt_dev.moreprocessors.processor.processors;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -23,7 +24,7 @@ import java.util.List;
  */
 public class PlaceOnTopProcessor extends StructureProcessor {
 
-	public static final Codec<PlaceOnTopProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+	public static final MapCodec<PlaceOnTopProcessor> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 			BuiltInRegistries.BLOCK.byNameCodec().fieldOf("below").forGetter((below) -> below.below),
 			BlockState.CODEC.fieldOf("above").forGetter((block) -> block.above),
 			Codec.FLOAT.optionalFieldOf("chance", 1.0f).forGetter((chance) -> chance.chance),

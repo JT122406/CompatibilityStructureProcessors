@@ -1,7 +1,7 @@
 package tech.jt_dev.moreprocessors.processor.processors;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -20,11 +20,10 @@ import java.util.List;
 
 public class SameStateCompatRuleProcessor extends StructureProcessor {
 
-    public static final Codec<SameStateCompatRuleProcessor> CODEC = SameStateCompatProcessorRule.CODEC
+    public static final MapCodec<SameStateCompatRuleProcessor> CODEC = SameStateCompatProcessorRule.CODEC
             .listOf()
             .fieldOf("rules")
-            .xmap(SameStateCompatRuleProcessor::new, arg -> arg.rules)
-            .codec();
+            .xmap(SameStateCompatRuleProcessor::new, arg -> arg.rules);
 
     private final ImmutableList<SameStateCompatProcessorRule> rules;
 

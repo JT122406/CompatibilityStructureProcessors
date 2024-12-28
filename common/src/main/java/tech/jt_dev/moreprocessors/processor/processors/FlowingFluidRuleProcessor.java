@@ -1,7 +1,7 @@
 package tech.jt_dev.moreprocessors.processor.processors;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -20,11 +20,10 @@ import java.util.List;
 
 public class FlowingFluidRuleProcessor extends StructureProcessor {
 
-    public static final Codec<FlowingFluidRuleProcessor> CODEC = FlowingFluidProcessorRule.CODEC
+    public static final MapCodec<FlowingFluidRuleProcessor> CODEC = FlowingFluidProcessorRule.CODEC
             .listOf()
             .fieldOf("rules")
-            .xmap(FlowingFluidRuleProcessor::new, arg -> arg.rules)
-            .codec();
+            .xmap(FlowingFluidRuleProcessor::new, arg -> arg.rules);
 
     private final ImmutableList<FlowingFluidProcessorRule> rules;
 

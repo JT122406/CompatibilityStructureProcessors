@@ -1,6 +1,6 @@
 package tech.jt_dev.moreprocessors.processor.processors;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,7 +20,7 @@ import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
 
 public class BiomeTagBasedProcessor extends StructureProcessor {
 
-	public static final Codec<BiomeTagBasedProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+	public static final MapCodec<BiomeTagBasedProcessor> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 			TagKey.codec(Registries.BIOME).fieldOf("biome").forGetter((processor) -> processor.biome),
 			BuiltInRegistries.BLOCK.byNameCodec().fieldOf("replace").forGetter((processor) -> processor.replace),
 			BlockState.CODEC.fieldOf("new_block").forGetter((processor) -> processor.newBlock)

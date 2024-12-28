@@ -9,8 +9,8 @@ import tech.jt_dev.moreprocessors.MoreStructureProcessors;
  */
 @Mod(MoreStructureProcessors.MOD_ID)
 public class MoreStructureProcessorsForge {
-    public MoreStructureProcessorsForge() {
+    public MoreStructureProcessorsForge(final FMLJavaModLoadingContext context) {
         MoreStructureProcessors.init();
-        ForgePlatformHandler.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ForgePlatformHandler.register(context.getModEventBus());
     }
 }
