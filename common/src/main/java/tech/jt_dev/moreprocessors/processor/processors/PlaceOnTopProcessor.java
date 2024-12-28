@@ -21,7 +21,6 @@ import java.util.List;
  * @see StructureProcessor
  * @author Joseph T. McQuigg
  */
-@Deprecated(forRemoval = true)
 public class PlaceOnTopProcessor extends StructureProcessor {
 
 	public static final Codec<PlaceOnTopProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(

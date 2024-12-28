@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import tech.jt_dev.moreprocessors.MoreStructureProcessors;
 import tech.jt_dev.moreprocessors.PlatformHandler;
 import tech.jt_dev.moreprocessors.processor.processors.*;
-import tech.jt_dev.moreprocessors.processor.processors.CompatRuleProcessor;
 
 import java.util.function.Supplier;
 

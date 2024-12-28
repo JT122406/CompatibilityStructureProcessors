@@ -14,7 +14,6 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tech.jt_dev.moreprocessors.processor.ProcessorRegister;
-import tech.jt_dev.moreprocessors.processor.processors.rules.CompatProcessorRule;
 import tech.jt_dev.moreprocessors.processor.processors.rules.SameStateCompatProcessorRule;
 
 import java.util.List;
