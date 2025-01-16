@@ -1,5 +1,6 @@
 # 1.2.1
 - Remove Deprecation on PlaceBelow and OnTop Processors
+- Add RandomCropRandomAgeProcessor
 
 # 1.2.0
 - Bunch of New Constructors
