@@ -1,6 +1,6 @@
 package tech.jt_dev.moreprocessors.processor.processors;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class RandomCropRandomAgeProcessor extends StructureProcessor {
 
-    public static final Codec<RandomCropRandomAgeProcessor> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<RandomCropRandomAgeProcessor> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             SimpleWeightedRandomList.wrappedCodec(BuiltInRegistries.BLOCK.byNameCodec()).fieldOf("crops").forGetter((block) -> block.crops),
             BuiltInRegistries.BLOCK.byNameCodec().fieldOf("ground").forGetter(block -> block.ground)
     ).apply(instance, RandomCropRandomAgeProcessor::new));

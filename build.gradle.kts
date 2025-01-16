@@ -102,7 +102,7 @@ subprojects {
             setReleaseType(ReleaseType.RELEASE)
             setGameVersions(minecraftVersion)
             setCurseEnvironment(CurseEnvironment.SERVER)
-            setJavaVersions(JavaVersion.VERSION_17, JavaVersion.VERSION_18, JavaVersion.VERSION_19, JavaVersion.VERSION_20, JavaVersion.VERSION_21, JavaVersion.VERSION_22)
+            setJavaVersions(JavaVersion.VERSION_21, JavaVersion.VERSION_22)
         }
 }
 
